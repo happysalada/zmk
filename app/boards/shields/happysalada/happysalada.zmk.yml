@@ -1,0 +1,11 @@
+file_format: "1"
+id: happysalada
+name: happysalada
+type: shield
+url: https://github.com/foostan/crkbd/
+requires: [pro_micro]
+features:
+  - keys
+siblings:
+  - happysalada_left
+  - happysalada_right

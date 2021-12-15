@@ -1,0 +1,76 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+
+#define DEFAULT 0
+#define NUMPAD  1
+#define PUNCT   2
+#define ARROWS  3
+
+/ {
+        keymap {
+                compatible = "zmk,keymap";
+
+                default_layer {
+// -----------------------------------------------------------------------------------------
+// |      |  Q  |  W  |  F  |  P   |  K  |                          |  Z  |  L   |  U  |  Y  |  :  |      |
+// |      |  A  |  R  |  S  |  T   |  G  |                          |  M  |  N   |  E  |  I  |  O  |      |
+// |      |  J  |  B  |  C  |  D   |  V  |                          |  X  |  H   |  ,  |  .  |  ?  |      |
+//                    | GUI | CAPS | SPC |                          | ENT | RSE  | ALT |
+                        bindings = <
+   &trans   &kp Q &kp W       &kp F      &kp P       &kp K           &kp Z &kp L        &kp U        &kp Y         &kp COLON  &trans
+   &trans   &kp A &mt LCTRL R &mt LGUI S &mt LSHFT T &kp G           &kp M &mt RSHFT N  &mt RGUI E   &mt RCTRL I   &kp O      &trans
+   &trans   &kp J &kp B       &kp C      &kp D       &kp V           &kp X &kp H        &kp COMMA    &kp DOT       &kp QMARK  &trans
+                 &lt ARROWS BSPC &kp CAPS &kp ESC   &kp TAB &lt PUNCT RET &lt NUMPAD SPACE
+                        >;
+                };
+                numpad_layer {
+// -----------------------------------------------------------------------------------------
+// |      |     |  <  |  -  |  >  |     |                         |     |  7  |  8  |  9  |     |      |
+// |      |     |  _  |  "  |  $  |     |                         |     |  4  |  5  |  6  |  0  |      |
+// |      |     |  !  |  @  |  ;  |     |                         |     |  1  |  2  |  3  |     |      |
+//                    |     |     |     |                         |     |     |     |
+                        bindings = <
+   &trans  &trans  &kp LT     &kp MINUS  &kp GT    &trans         &trans   &kp N7   &kp N8 &kp N9  &trans &trans
+   &trans  &trans  &kp UNDER  &kp DQT    &kp DLLR  &trans         &trans   &kp N4   &kp N5 &kp N6  &kp N0 &trans
+   &trans  &trans  &kp EXCL   &kp AT     &kp SEMI  &trans         &trans   &kp N1   &kp N2 &kp N3  &trans &trans
+                          	&trans     &trans    &trans         &trans   &trans   &trans
+                        >;
+                };
+
+                punct_layer {
+// -----------------------------------------------------------------------------------------
+// |      |     |  +  |  ^  |  &  |     |                             |     |  =  |  %  |  #  |     |      |
+// |      |     |  ~  |  '  |  |  |     |                             |     |  (  |  {  |  [  |     |      |
+// |      |     |  \  |  *  |  /  |     |                             |     |  )  |  }  |  ]  |     |      |
+//                    |     |     |     |                             |     |     |     |
+                        bindings = <
+   &trans &trans   &kp PLUS    &kp CARET        &kp AMPS   &trans      &trans  &kp EQUAL &kp PRCNT  &kp HASH &trans &trans
+   &trans &trans   &kp TILDE2  &kp SQT          &kp PIPE   &trans      &trans  &kp LPAR  &kp LBRC   &kp LBKT &trans &trans
+   &trans &trans   &kp BSLH    &kp KP_MULTIPLY  &kp FSLH   &trans      &trans  &kp RPAR  &kp RBRC   &kp RBKT &trans &trans
+                    	       &kp trans        &trans     &trans      &trans  &trans    &trans
+                        >;
+                };
+
+                arrow_layer {
+// -----------------------------------------------------------------------------------------
+// |      |     |  @  |  #  |  $  |     |                     |     |     |  ^  |     |     |      |
+// |      |     |     |     |     |     |                     |     |  <- |  |  |  -> |     |      |
+// |      |     |     |     |     |     |                     |     |     |     |     |     |      |
+//                    |     |     |     |                     |     |     |     |
+                        bindings = <
+   &trans  &trans  &trans     &trans    &trans     &trans      &trans &kp HOME  &kp UP    &kp END    &trans &trans
+   &trans  &trans  &kp LCTRL  &kp LGUI  &kp LSHFT  &trans      &trans &kp LEFT  &kp DOWN  &kp RIGHT  &trans &trans
+   &trans  &trans  &trans     &trans    &trans     &trans      &trans &trans    &trans    &trans     &trans &trans
+                    	      &trans    &trans     &trans      &trans &trans    &trans
+                        >;
+                };
+        };
+};
